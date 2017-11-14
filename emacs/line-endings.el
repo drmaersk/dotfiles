@@ -1,0 +1,21 @@
+;;;;;;;;;;;;;;;;;;;;; LINE ENDING STUFF ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defun remove-trailing-whitespace ()
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (while (re-search-forward "[ \t]+$" nil t)
+      (replace-match "" nil nil)))
+  nil)
+ (defun add-remove-trailing-whitespace-hook ()
+  (add-hook 'local-write-file-hooks 'remove-trailing-whitespace))
+
+ (add-hook 'awk-mode-hook 'add-remove-trailing-whitespace-hook)
+ (add-hook 'c++-mode-hook 'add-remove-trailing-whitespace-hook)
+ (add-hook 'c-mode-hook 'add-remove-trailing-whitespace-hook)
+ (add-hook 'emacs-lisp-mode-hook 'add-remove-trailing-whitespace-hook)
+ (add-hook 'erlang-mode-hook 'add-remove-trailing-whitespace-hook)
+ (add-hook 'java-mode-hook 'add-remove-trailing-whitespace-hook)
+ (add-hook 'makefile-mode-hook 'add-remove-trailing-whitespace-hook)
+ (add-hook 'python-mode-hook 'add-remove-trailing-whitespace-hook)
+ (add-hook 'shell-script-mode-hook 'add-remove-trailing-whitespace-hook)
+ (add-hook 'text-mode-hook 'add-remove-trailing-whitespace-hook)
