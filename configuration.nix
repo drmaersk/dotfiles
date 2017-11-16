@@ -33,8 +33,8 @@ in
   # };
 
   # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
-
+  time.timeZone = "Europe/Stockholm";
+  services.ntp.enable = true;
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
    environment.systemPackages = with pkgs; [
@@ -52,11 +52,16 @@ in
      global
      kdiff3
      minicom
+     thunderbird
    ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
-    programs.bash.enableCompletion = true;
+  programs.bash.enableCompletion = true;
+  programs.bash.shellAliases = {
+    "ll" = "ls -al";
+    "title" = "set-title";
+  };
   # programs.mtr.enable = true;
   # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
 
@@ -76,9 +81,9 @@ in
 
   # Enable the X11 windowing system.
    services.xserver.enable = true;
-   services.xserver.layout = "us";
-#   services.xserver.xkbVariant = "se";
-#   services.xserver.xkbOptions = "dvorak:se";
+   services.xserver.layout = "se";
+   services.xserver.xkbVariant = "dvorak";
+   services.xserver.videoDrivers = [ "intel" ];
 
   # Enable touchpad support.
   # services.xserver.libinput.enable = true;

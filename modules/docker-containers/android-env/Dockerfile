@@ -14,6 +14,10 @@ RUN apt-get -y install python bc
 
 RUN apt-get -y install libssl-dev
 
+RUN apt-get -y install python-mako
+RUN apt-get -y install gettext
+RUN apt-get -y install vim-common
+
 RUN mkdir -p /etc/udev/rules.d && echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="8087", MODE="0666", GROUP="plugdev"' > /etc/udev/rules.d/51-android.rules
 
 RUN apt-get -y install wget
@@ -23,5 +27,6 @@ RUN wget -O /usr/local/sbin/adb https://raw.githubusercontent.com/NicolasBernaer
 RUN wget -O /usr/local/sbin/fastboot https://raw.githubusercontent.com/NicolasBernaerts/ubuntu-scripts/master/android/fastboot
 RUN wget -O /usr/local/sbin/repo https://storage.googleapis.com/git-repo-downloads/repo
 RUN chmod +x /usr/local/sbin/adb /usr/local/sbin/fastboot /usr/local/sbin/repo
-
 RUN apt-get -y install tmux
+RUN useradd -r -s /bin/bash -u 1000 robban
+USER robban
