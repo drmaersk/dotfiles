@@ -1,28 +1,23 @@
-
-;; Addedee by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
+(setq inhibit-splash-screen t)
 (package-initialize)
-
 (let ((default-directory  "~/.emacs.d/"))
       (normal-top-level-add-subdirs-to-load-path))
 
 
 (load "~/dotfiles/emacs/001-package.el")
 (load "~/dotfiles/emacs/color-theme-settings.el")
-(load "~/dotfiles/emacs/keybindings.el")
 (load "~/dotfiles/emacs/line-endings.el")
+(load "~/dotfiles/emacs/helm.el")
 (load "~/dotfiles/emacs/ibuffer.el")
-;;(load "~/dotfiles/emacs/helm.el")
+(load "~/dotfiles/emacs/keybindings.el")
 
-
-
-(setq inhibit-splash-screen t)
 (delete-selection-mode 1)
 (dynamic-completion-mode)
 (global-linum-mode 1)
 
+(setq tab-width 4) ; or any other preferred value
+(setq c-default-style "linux"
+      c-basic-offset 4)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -52,4 +47,4 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (helm-gtags ggtags nix-mode color-theme helm company))))
+	(ibuffer-projectile helm-gtags ggtags nix-mode color-theme helm company))))

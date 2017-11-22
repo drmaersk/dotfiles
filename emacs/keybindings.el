@@ -1,5 +1,5 @@
 ;;KEYBINDINGS
-;;(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "C-!") 'set-frame-name)
 (global-set-key (kbd "M-<left>") 'previous-buffer)
@@ -24,4 +24,5 @@
 (global-set-key (kbd "C-/") 'comment-or-uncomment-region)
 (global-set-key (kbd "C-å") 'bookmark-set)
 (global-set-key (kbd "C-ä") 'bookmark-jump)
+(global-set-key (kbd "C-<tab>") 'projectile-find-other-file)
 ;;(global-set-key (kbd "§") 'complete)

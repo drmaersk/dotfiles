@@ -53,6 +53,7 @@ in
      kdiff3
      minicom
      thunderbird
+#     virtualbox
    ];
 
   # Some programs need SUID wrappers, can be configured further or are
