@@ -17,6 +17,8 @@ RUN apt-get -y install libssl-dev
 RUN apt-get -y install python-mako
 RUN apt-get -y install gettext
 RUN apt-get -y install vim-common
+RUN apt-get -y install python3
+RUN apt-get -y install cmake
 
 RUN mkdir -p /etc/udev/rules.d && echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="8087", MODE="0666", GROUP="plugdev"' > /etc/udev/rules.d/51-android.rules
 
