@@ -54,6 +54,7 @@ in
      minicom
      thunderbird
 #     virtualbox
+     terminator    
    ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -62,6 +63,7 @@ in
   programs.bash.shellAliases = {
     "ll" = "ls -al";
     "title" = "set-title";
+    "ec" = "emacsclient --no-wait";
   };
   # programs.mtr.enable = true;
   # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
