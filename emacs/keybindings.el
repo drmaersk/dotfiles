@@ -25,4 +25,5 @@
 (global-set-key (kbd "C-å") 'bookmark-set)
 (global-set-key (kbd "C-ä") 'bookmark-jump)
 (global-set-key (kbd "C-<tab>") 'projectile-find-other-file)
+(global-set-key (kbd "C-r") 'revert-buffer)
 ;;(global-set-key (kbd "§") 'complete)

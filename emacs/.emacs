@@ -33,4 +33,4 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-	(ibuffer-projectile helm-gtags ggtags nix-mode color-theme helm company))))
+    (flycheck-irony flycheck plantuml-mode flymd ibuffer-projectile helm-gtags ggtags nix-mode color-theme helm company))))

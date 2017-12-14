@@ -1,6 +1,7 @@
 (delete-selection-mode 1)
 (dynamic-completion-mode)
 (global-linum-mode 1)
+(show-paren-mode 1)
 (setq inhibit-startup-screen t)
 (setq inhibit-splash-screen t)
 (setq-default indent-tabs-mode nil)

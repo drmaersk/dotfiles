@@ -37,25 +37,37 @@ in
   services.ntp.enable = true;
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-   environment.systemPackages = with pkgs; [
-     wget
-     vim
-     emacs
-     firefox
-     gitRepo
-     git
-     pidgin
-     chromium
-     keepassx-community
-     bluez
-     pulseaudioFull
-     global
-     kdiff3
-     minicom
-     thunderbird
-#     virtualbox
-     terminator    
-   ];
+
+  environment.systemPackages = with pkgs; [
+    wget
+    vim
+    emacs
+    firefox
+    gitRepo
+    git
+    pidgin
+    chromium
+    keepassx-community
+    bluez
+    pulseaudioFull
+    global
+    kdiff3
+    minicom
+    thunderbird
+    virtualbox
+    terminator
+    exfat
+    exfat-utils
+    fuse_exfat
+    discount
+    autocutsel
+    guake
+    gnome3.gconf
+  ];
+  
+  #     linuxPackages.virtualbox
+  virtualisation.virtualbox.host.enable = true;
+  
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -100,8 +112,12 @@ in
      isNormalUser = true;
      extraGroups = ["wheel" "docker"];
      uid = 1000;
-   };
+  };
 
+#  nixpkgs.config = {
+#    allowUnfree = true;
+#    firefox.enableAdobeFlash = true;
+#  };
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
