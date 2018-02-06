@@ -24,7 +24,7 @@
 ;;(setq make-backup-files nil)
 (server-start)
 
-
+(setq-default indent-tabs-mode nil)
 ;;;; (color-theme company ggtags helm-gtags helm-projectile helm-swoop helm helm-core async ibuffer-projectile nix-mode popup projectile pkg-info epl dash)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -33,4 +33,5 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (flycheck-irony flycheck plantuml-mode flymd ibuffer-projectile helm-gtags ggtags nix-mode color-theme helm company))))
+    (helm-rtags rtags flycheck-irony flycheck plantuml-mode flymd ibuffer-projectile helm-gtags ggtags nix-mode color-theme helm company))))
+(put 'downcase-region 'disabled nil)

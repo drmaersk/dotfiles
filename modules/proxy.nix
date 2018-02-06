@@ -17,7 +17,7 @@
   services.cntlm.extraConfig = "
 NoProxy localhost, 127.0.0.*, 10.*, 192.168.*, *.delphiauto.net
 Auth            NTLMv2
-PassNTLMv2      BD2C174928EEB53E0156B0F4C9A1A4E7
+PassNTLMv2      20DCE31F27409572E3F6856965263493
 ";
   networking.proxy.noProxy = "localhost, 127.0.0.*, 192.168.*, *.delphiauto.net";
   networking.proxy.default = "http://127.0.0.1:3128";

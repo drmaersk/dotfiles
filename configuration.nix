@@ -63,6 +63,25 @@ in
     autocutsel
     guake
     gnome3.gconf
+    gptfdisk
+    davmail
+    libreoffice
+    dosfstools
+    notepadqq
+    gdb
+    fzf
+    cmake
+    gcc7
+    gnumake42
+    clang_5
+    llvm_5
+    llvmPackages.libcxxClang
+    unzip
+    zlib
+    openssl
+    rtags
+    clangStdenv
+    ntfs3g
   ];
   
   #     linuxPackages.virtualbox

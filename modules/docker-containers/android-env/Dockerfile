@@ -19,6 +19,8 @@ RUN apt-get -y install gettext
 RUN apt-get -y install vim-common
 RUN apt-get -y install python3
 RUN apt-get -y install cmake
+RUN apt-get -y install bear
+RUN apt-get -y install libsecret-1-0
 
 RUN mkdir -p /etc/udev/rules.d && echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="8087", MODE="0666", GROUP="plugdev"' > /etc/udev/rules.d/51-android.rules
 
@@ -30,5 +32,3 @@ RUN wget -O /usr/local/sbin/fastboot https://raw.githubusercontent.com/NicolasBe
 RUN wget -O /usr/local/sbin/repo https://storage.googleapis.com/git-repo-downloads/repo
 RUN chmod +x /usr/local/sbin/adb /usr/local/sbin/fastboot /usr/local/sbin/repo
 RUN apt-get -y install tmux
-RUN useradd -r -s /bin/bash -u 1000 robban
-USER robban
