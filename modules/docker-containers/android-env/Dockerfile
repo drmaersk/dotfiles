@@ -32,3 +32,4 @@ RUN wget -O /usr/local/sbin/fastboot https://raw.githubusercontent.com/NicolasBe
 RUN wget -O /usr/local/sbin/repo https://storage.googleapis.com/git-repo-downloads/repo
 RUN chmod +x /usr/local/sbin/adb /usr/local/sbin/fastboot /usr/local/sbin/repo
 RUN apt-get -y install tmux
+RUN alias ll="ls -al"

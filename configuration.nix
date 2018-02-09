@@ -8,6 +8,15 @@ let
   pidgin = pkgs.pidgin-with-plugins.override {
     plugins = [ pkgs.pidginsipe ];
   };
+  spotify = pkgs.spotify.overrideDerivation (oldAttrs: rec {
+    name = "spotify-${version}";
+    version = "1.0.70.399.g5ffabd56-26";
+  
+    src = pkgs.fetchurl {
+      url = "https://repository-origin.spotify.com/pool/non-free/s/spotify-client/spotify-client_${version}_amd64.deb";
+      sha256 = "0kpakz11xkyqqjvln4jkhc3z5my8zgpw8m6jx954cjdbc6vkxd29";
+     };
+  });
 in
 {
   imports =
@@ -22,6 +31,17 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  hardware.bluetooth.enable = true;
+  hardware.pulseaudio = {
+    enable = true;
+    support32Bit = true;
+    zeroconf.discovery.enable = true;
+    package = pkgs.pulseaudioFull;
+  };
+
+
+  nixpkgs.config.pulseaudio = true;
+  
   # networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -48,8 +68,7 @@ in
     pidgin
     chromium
     keepassx-community
-    bluez
-    pulseaudioFull
+#    bluez
     global
     kdiff3
     minicom
@@ -82,6 +101,10 @@ in
     rtags
     clangStdenv
     ntfs3g
+    pavucontrol
+    lsof
+    ag
+    spotify
   ];
   
   #     linuxPackages.virtualbox
@@ -91,10 +114,15 @@ in
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs.bash.enableCompletion = true;
+
+  programs.bash.interactiveShellInit = ''
+    title() { printf '\033]2;'$1'\a'; }
+  '';
+  
   programs.bash.shellAliases = {
     "ll" = "ls -al";
-    "title" = "set-title";
     "ec" = "emacsclient --no-wait";
+    
   };
   # programs.mtr.enable = true;
   # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
@@ -129,14 +157,14 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.extraUsers.robban = {
      isNormalUser = true;
-     extraGroups = ["wheel" "docker"];
+     extraGroups = ["wheel" "docker" "sound" "pulse" "audio" ];
      uid = 1000;
   };
 
-#  nixpkgs.config = {
-#    allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
+    
 #    firefox.enableAdobeFlash = true;
-#  };
+
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
