@@ -14,13 +14,13 @@
   services.cntlm.username = "RoberthA";
   services.cntlm.password = "";
   # To generate new hash: cntlm -u RoberthA -d mecel -H semegot-pr02.mecel.net 80
-#  
+#  NoProxy localhost, 127.0.0.*, 10.*, 192.168.*, *.delphiauto.net  
   services.cntlm.extraConfig = "
-NoProxy localhost, 127.0.0.*, 10.*, 192.168.*, *.delphiauto.net  
+NoProxy *
 Auth            NTLMv2
 PassNTLMv2      8ACF7FF88932CD7089B8589D8B677E41
 ";
-  networking.proxy.noProxy = "localhost, 127.0.0.*, 192.168.*, *.delphiauto.net";
+  networking.proxy.noProxy = "*";
   networking.proxy.default = "http://127.0.0.1:3128";
 
   environment.etc.gitconfig.text = ''

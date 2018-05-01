@@ -9,9 +9,9 @@ DIR="$( cd "$( dirname "''${BASH_SOURCE[0]}" )" && pwd )"
 
 if [[ "$1" == "-p" ]]
 then
-  read -p "Proxy server (semegot-pr02.mecel.net, proxy-emea.delphiauto.net): " PROXY_SERVER
-  read -p "Proxy port (80, 8080): " PROXY_PORT
-  read -p "Proxy user (MichaelL, ljhld5): " PROXY_USER
+  read -p "Proxy server (semegot-pr02.mecel.net  proxy-emea.delphiauto.net): " PROXY_SERVER
+  read -p "Proxy port (80 8080): " PROXY_PORT
+  read -p "Proxy user (RoberthA  mj08y1): " PROXY_USER
   read -s -p "Proxy password: " PROXY_PASSWORD
   PROXY="http://$PROXY_USER:$PROXY_PASSWORD@$PROXY_SERVER:$PROXY_PORT"
 

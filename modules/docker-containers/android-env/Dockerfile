@@ -21,10 +21,16 @@ RUN apt-get -y install python3
 RUN apt-get -y install cmake
 RUN apt-get -y install bear
 RUN apt-get -y install libsecret-1-0
+RUN apt-get -y install python3-pip
+RUN apt-get -y install gdb
+RUN apt-get -y install ddd
+RUN pip3 install Jinja2
+RUN pip3 install xlrd
 
 RUN mkdir -p /etc/udev/rules.d && echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="8087", MODE="0666", GROUP="plugdev"' > /etc/udev/rules.d/51-android.rules
 
 RUN apt-get -y install wget
+RUN apt-get -y install lcov
 RUN wget https://dl.google.com/android/repository/platform-tools-latest-linux.zip
 RUN unzip -d /usr/local/sbin platform-tools-latest-linux.zip
 RUN wget -O /usr/local/sbin/adb https://raw.githubusercontent.com/NicolasBernaerts/ubuntu-scripts/master/android/adb

@@ -9,6 +9,7 @@
 (load "~/dotfiles/emacs/ibuffer.el")
 (load "~/dotfiles/emacs/keybindings.el")
 (load "~/dotfiles/emacs/editor.el")
+(load "~/dotfiles/emacs/flymd.el")
 
 
 (custom-set-faces

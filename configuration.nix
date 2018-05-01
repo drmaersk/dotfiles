@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   pidgin = pkgs.pidgin-with-plugins.override {
@@ -16,15 +16,18 @@ let
       url = "https://repository-origin.spotify.com/pool/non-free/s/spotify-client/spotify-client_${version}_amd64.deb";
       sha256 = "0kpakz11xkyqqjvln4jkhc3z5my8zgpw8m6jx954cjdbc6vkxd29";
      };
-  });
+});
+
+
+
 in
 {
   imports =
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
-#      ./modules/layoutSwitcher.nix
-      ./modules/proxy.nix
+      ./modules/proxy_no_proxy.nix
       ./modules/docker.nix
+#      ./modules/opengrok.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -40,17 +43,21 @@ in
   };
 
 
-  nixpkgs.config.pulseaudio = true;
-  
-  # networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  #Workaround instructions if a2dp does not work.
+  #  Try 1-2 times
+  #  systemctl restart bluetooth
+  #  bluetoothctl
+  #  connect <MAC>
+  #  pacmd set-card-profile "$(pactl list cards short | egrep -o bluez_card[[:alnum:]._]+)" a2dp_sink
+  hardware.bluetooth.extraConfig = "
+  [General]
+  Enable=Source,Sink,Media,Socket
+  Disable=Headset
+";
 
-  # Select internationalisation properties.
-  # i18n = {
-  #   consoleFont = "Lat2-Terminus16";
-  #   consoleKeyMap = "us";
-  #   defaultLocale = "en_US.UTF-8";
-  # };
+
+  nixpkgs.config.pulseaudio = true;
+ 
 
   # Set your time zone.
   time.timeZone = "Europe/Stockholm";
@@ -68,7 +75,6 @@ in
     pidgin
     chromium
     keepassx-community
-#    bluez
     global
     kdiff3
     minicom
@@ -105,6 +111,23 @@ in
     lsof
     ag
     spotify
+    parcellite
+    jre
+    graphviz
+    doxygen
+    tomcat8
+    opengrok
+    lm_sensors
+    bluez
+    bluez-tools
+    blueman
+    python
+    python3
+    gdb
+    cpulimit
+    file
+    libcgroup
+    lcov
   ];
   
   #     linuxPackages.virtualbox
@@ -122,8 +145,18 @@ in
   programs.bash.shellAliases = {
     "ll" = "ls -al";
     "ec" = "emacsclient --no-wait";
-    
+
+   
   };
+
+  environment.etc."inputrc".text = lib.mkForce (
+    builtins.readFile <nixpkgs/nixos/modules/programs/bash/inputrc>
+    + ''
+      #  alternate mappings for "page up" and "page down" to search the history
+      "\e[5~": history-search-backward
+      "\e[6~": history-search-forward
+    ''
+  );
   # programs.mtr.enable = true;
   # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
 
