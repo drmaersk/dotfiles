@@ -12,6 +12,14 @@
 (load "~/dotfiles/emacs/flymd.el")
 
 
+;; Package: dtrt-indent
+(require 'dtrt-indent)
+(dtrt-indent-mode 1)
+
+  ;; Package: ws-butler
+(require 'ws-butler)
+(add-hook 'c-mode-common-hook 'ws-butler-mode)
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -34,5 +42,5 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (helm-ag helm-rtags rtags flycheck-irony flycheck plantuml-mode flymd ibuffer-projectile helm-gtags ggtags nix-mode color-theme helm company))))
+    (ws-butler dtrt-indent helm-ag helm-rtags rtags flycheck-irony flycheck plantuml-mode flymd ibuffer-projectile helm-gtags ggtags nix-mode color-theme helm company))))
 (put 'downcase-region 'disabled nil)

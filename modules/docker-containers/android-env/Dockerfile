@@ -28,10 +28,19 @@ RUN pip3 install Jinja2
 RUN pip3 install xlrd
 
 RUN mkdir -p /etc/udev/rules.d && echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="8087", MODE="0666", GROUP="plugdev"' > /etc/udev/rules.d/51-android.rules
-
+RUN apt-get -y install software-properties-common
+RUN apt-get -y install python3-software-properties
+RUN apt-get -y install python-software-properties
 RUN apt-get -y install wget
 RUN apt-get -y install lcov
 RUN wget https://dl.google.com/android/repository/platform-tools-latest-linux.zip
+
+RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
+RUN add-apt-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-6.0 main"
+RUN apt-get update
+RUN apt-get install -y clang-6.0
+
+
 RUN unzip -d /usr/local/sbin platform-tools-latest-linux.zip
 RUN wget -O /usr/local/sbin/adb https://raw.githubusercontent.com/NicolasBernaerts/ubuntu-scripts/master/android/adb
 RUN wget -O /usr/local/sbin/fastboot https://raw.githubusercontent.com/NicolasBernaerts/ubuntu-scripts/master/android/fastboot

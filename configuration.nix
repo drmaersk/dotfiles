@@ -24,10 +24,11 @@ in
 {
   imports =
     [ # Include the results of the hardware scan.
-      /etc/nixos/hardware-configuration.nix
-      ./modules/proxy_no_proxy.nix
-      ./modules/docker.nix
-#      ./modules/opengrok.nix
+    /etc/nixos/hardware-configuration.nix
+#    ./modules/proxy_no_proxy.nix
+    ./modules/proxy.nix
+    ./modules/docker.nix
+    #      ./modules/opengrok.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -52,7 +53,6 @@ in
   hardware.bluetooth.extraConfig = "
   [General]
   Enable=Source,Sink,Media,Socket
-  Disable=Headset
 ";
 
 
@@ -101,6 +101,7 @@ in
     clang_5
     llvm_5
     llvmPackages.libcxxClang
+    libcxx
     unzip
     zlib
     openssl
