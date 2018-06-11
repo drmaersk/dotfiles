@@ -32,6 +32,7 @@ RUN apt-get -y install software-properties-common
 RUN apt-get -y install python3-software-properties
 RUN apt-get -y install python-software-properties
 RUN apt-get -y install wget
+RUN apt-get -y install w3m
 RUN apt-get -y install lcov
 RUN wget https://dl.google.com/android/repository/platform-tools-latest-linux.zip
 

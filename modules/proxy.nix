@@ -9,17 +9,21 @@
 
   services.cntlm.domain = "mecel";
   services.cntlm.enable = true;
-  services.cntlm.proxy = ["semegot-pr02.mecel.net:80"];
+  services.cntlm.proxy = ["10.236.88.106:80"];
+  #services.cntlm.proxy = ["autoproxy-emea.delphiauto.net:8080"];
   services.cntlm.port = [3128];
   services.cntlm.username = "RoberthA";
+  #services.cntlm.username = "mj08y1";
   services.cntlm.password = "";
-  # To generate new hash: cntlm -u RoberthA -d mecel -H semegot-pr02.mecel.net 80
+  # To generate new hash: cntlm -u RoberthA -d MECEL -H semegot-pr02.mecel.net 80
 #  
   services.cntlm.extraConfig = "
 NoProxy localhost, 127.0.0.*, 10.*, 192.168.*, *.delphiauto.net  
 Auth            NTLMv2
 PassNTLMv2      8ACF7FF88932CD7089B8589D8B677E41
 ";
+
+#  PassNTLMv2      38495C2BC3DCCE372639E39E98F626D8    # Only for user 'mj08y1', domain 'EUROPE'
   networking.proxy.noProxy = "localhost, 127.0.0.*, 192.168.*, *.delphiauto.net";
   networking.proxy.default = "http://127.0.0.1:3128";
 

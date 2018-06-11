@@ -98,15 +98,13 @@ in
     cmake
     gcc7
     gnumake42
-    clang_5
-    llvm_5
-    llvmPackages.libcxxClang
+    clang_6
+    llvm_6
     libcxx
     unzip
     zlib
     openssl
     rtags
-    clangStdenv
     ntfs3g
     pavucontrol
     lsof
@@ -130,6 +128,7 @@ in
     libcgroup
     lcov
   ];
+  #        cntlm
   
   #     linuxPackages.virtualbox
   virtualisation.virtualbox.host.enable = true;

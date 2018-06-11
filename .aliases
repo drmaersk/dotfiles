@@ -9,7 +9,7 @@ alias copy_build_server_ihu="scp -r robban@10.239.124.56:/home/robban/ihu/out/ta
 alias copy_build_server_sem="scp -r robban@10.239.124.56:/home/robban/sem/out/target/product/gtt_abl_car/fast_flashfiles/ ."
 alias connect_serial0="sudo minicom -b 115200 -D /dev/ttyUSB0"
 alias connect_serial1="sudo minicom -b 115200 -D /dev/ttyUSB1"
-alias start_rdm="rdm -j 1 -B -a 19 &> /dev/null & disown"
+start_rdm() { rdm -j 1 -B -a 19 &> /dev/null & disown; }
 alias limit_rdm="cpulimit -l 10 -e rp &> /dev/null & disown"
 #search_replace() { find . -type f | xargs echo $1 $2; }
 #search_replace() { find . -type f | xargs sed -i -e 's|$1|$2|g'; }
