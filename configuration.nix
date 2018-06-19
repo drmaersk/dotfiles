@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, nixpkgs, ... }:
 
 let
   pidgin = pkgs.pidgin-with-plugins.override {
@@ -28,7 +28,6 @@ in
 #    ./modules/proxy_no_proxy.nix
     ./modules/proxy.nix
     ./modules/docker.nix
-    #      ./modules/opengrok.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -128,7 +127,8 @@ in
     libcgroup
     lcov
   ];
-  #        cntlm
+#    cquery-2018-05-01
+
   
   #     linuxPackages.virtualbox
   virtualisation.virtualbox.host.enable = true;

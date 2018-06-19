@@ -2,6 +2,8 @@
 (let ((default-directory  "~/.emacs.d/"))
       (normal-top-level-add-subdirs-to-load-path))
 
+(load "/home/robban/.emacs.d/elpa/cquery-20180413.938/cquery.el")
+
 (load "~/dotfiles/emacs/001-package.el")
 (load "~/dotfiles/emacs/color-theme-settings.el")
 (load "~/dotfiles/emacs/line-endings.el")
@@ -11,6 +13,20 @@
 (load "~/dotfiles/emacs/editor.el")
 (load "~/dotfiles/emacs/flymd.el")
 
+;;cquery
+(setq cquery-executable "/home/robban/.nix-profile/bin/cquery")
+
+;; (defun cquery//enable ()
+;;   (condition-case nil
+;;       (lsp-cquery-enable)
+;;     (user-error nil)))
+
+;;   (use-package cquery
+;;     :commands lsp-cquery-enable
+;;     :init (add-hook 'c-mode-common-hook #'cquery//enable))
+;; Also see lsp-project-whitelist lsp-project-blacklist cquery-root-matchers
+
+;;cquery end
 
 ;; Package: dtrt-indent
 (require 'dtrt-indent)
@@ -42,5 +58,5 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (ws-butler dtrt-indent helm-ag helm-rtags rtags flycheck-irony flycheck plantuml-mode flymd ibuffer-projectile helm-gtags ggtags nix-mode color-theme helm company))))
+    (cquery ws-butler dtrt-indent helm-ag helm-rtags rtags flycheck-irony flycheck plantuml-mode flymd ibuffer-projectile helm-gtags ggtags nix-mode color-theme helm company))))
 (put 'downcase-region 'disabled nil)
