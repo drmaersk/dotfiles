@@ -16,6 +16,8 @@
 ;;cquery
 (setq cquery-executable "/home/robban/.nix-profile/bin/cquery")
 
+(load "/home/robban/.emacs.d/helm-opengrok/helm-opengrok.el")
+
 ;; (defun cquery//enable ()
 ;;   (condition-case nil
 ;;       (lsp-cquery-enable)
@@ -58,5 +60,5 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (cquery ws-butler dtrt-indent helm-ag helm-rtags rtags flycheck-irony flycheck plantuml-mode flymd ibuffer-projectile helm-gtags ggtags nix-mode color-theme helm company))))
+    (eopengrok cquery ws-butler dtrt-indent helm-ag helm-rtags rtags flycheck-irony flycheck plantuml-mode flymd ibuffer-projectile helm-gtags ggtags nix-mode color-theme helm company))))
 (put 'downcase-region 'disabled nil)

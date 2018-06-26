@@ -126,6 +126,8 @@ in
     file
     libcgroup
     lcov
+    ctags
+    openjdk10
   ];
 #    cquery-2018-05-01
 
