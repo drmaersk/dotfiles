@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+if [ "$EUID" -ne 0 ]
+then
+  echo "$0 must be run as root" 1>&2
+  exit 1
+fi
+
+function on_exit() {
+  echo "Performing Teardown"
+  if [ "$ROUTE_STATUS" -eq 1 ]
+  then
+    route add default gw "$GATEWAY" "$DEVICE"
+  elif [ "$ROUTE_STATUS" -eq 2 ]
+  then
+    route delete default gw 0.0.0.0
+    route add default gw "$GATEWAY" "$DEVICE"
+  fi
+}
+
+echo "Generate a VPN cookie by logging in to https://access.emea.delphi.com/ (Do not forget to disable the proxy in firefox)"
+echo "Find the cookie in 'preferences->remove individual cookies' and search for DSID"
+read -p "Cookie content: " COOKIE
+
+openconnect --no-proxy --juniper -C "DSID=$COOKIE" access.emea.delphi.com/sslvpn &
+
+while ! ip link | grep tun0
+do
+  sleep 1
+  echo "Waiting for device tun0..."
+done
+
+DEVICE="$(route -n | grep '^0.0.0.0' | awk '{ print $8 }')"
+GATEWAY="$(route -n | grep '^0.0.0.0' | awk '{ print $2 }')"
+NETMASK="$(route -n | grep '^0.0.0.0' | awk '{ print $3 }')"
+
+trap on_exit INT
+ROUTE_STATUS=0
+
+if route delete default gw $GATEWAY $DEVICE
+then
+  ROUTE_STATUS=1
+else
+  echo "Failed to remove default gateway"
+  exit 2
+fi
+
+if route add -net 0.0.0.0 netmask 0.0.0.0 dev tun0
+then
+  ROUTE_STATUS=2
+else
+  echo "Failed to add VPN gateway"
+  exit 3
+fi
+
+echo "Press CTRL+C in order to tear down the VPN connection"
+wait

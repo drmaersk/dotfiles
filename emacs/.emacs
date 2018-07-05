@@ -60,5 +60,5 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (eopengrok cquery ws-butler dtrt-indent helm-ag helm-rtags rtags flycheck-irony flycheck plantuml-mode flymd ibuffer-projectile helm-gtags ggtags nix-mode color-theme helm company))))
+    (android-mode elogcat eopengrok cquery ws-butler dtrt-indent helm-ag helm-rtags rtags flycheck-irony flycheck plantuml-mode flymd ibuffer-projectile helm-gtags ggtags nix-mode color-theme helm company))))
 (put 'downcase-region 'disabled nil)

@@ -28,6 +28,7 @@ in
 #    ./modules/proxy_no_proxy.nix
     ./modules/proxy.nix
     ./modules/docker.nix
+#    ./modules/vpn/pkgs/delphi_vpn/default.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -128,6 +129,9 @@ in
     lcov
     ctags
     openjdk10
+    tmux
+    sshfs
+    (import ./pkgs/delphi_vpn)
   ];
 #    cquery-2018-05-01
 
@@ -142,13 +146,21 @@ in
 
   programs.bash.interactiveShellInit = ''
     title() { printf '\033]2;'$1'\a'; }
+    start_rdm() { rdm -j 1 -B -a 19 &> /dev/null & disown; }
   '';
   
   programs.bash.shellAliases = {
     "ll" = "ls -al";
     "ec" = "emacsclient --no-wait";
-
-   
+    "vbmeta"="/home/robban/ihu/external/avb/avbtool make_vbmeta_image --flag 2 --output vbmeta.img;echo 'done'";
+    "sync"="adb root;adb remount;adb sync;adb shell sync";
+    "build_server_connect"="ssh robban@10.239.124.56";
+    "copy_build_server_ihu"="scp -r robban@10.239.124.56:/home/robban/ihu/out/target/product/ihu_abl_car/ihu_kraken-flashfiles-eng.robban.zip .";
+    "copy_build_server_sem"="scp -r robban@10.239.124.56:/home/robban/sem/out/target/product/gtt_abl_car/fast_flashfiles/ .";
+    "connect_serial0"="sudo minicom -b 115200 -D /dev/ttyUSB0";
+    "connect_serial1"="sudo minicom -b 115200 -D /dev/ttyUSB1";
+    "mount_bs"="sshfs -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3 robban@10.239.124.56:/ /home/robban/buildserver/";
+    "unmount_bs"="fusermount3 -u /home/robban/buildserver/";
   };
 
   environment.etc."inputrc".text = lib.mkForce (

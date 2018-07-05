@@ -24,6 +24,7 @@ RUN apt-get -y install libsecret-1-0
 RUN apt-get -y install python3-pip
 RUN apt-get -y install gdb
 RUN apt-get -y install ddd
+RUN apt-get -y install liblz4-tool
 RUN pip3 install Jinja2
 RUN pip3 install xlrd
 
