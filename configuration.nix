@@ -151,7 +151,8 @@ in
   
   programs.bash.shellAliases = {
     "ll" = "ls -al";
-    "ec" = "emacsclient --no-wait";
+    "emc" = "emacsclient --no-wait";
+    "ec" = "emacsclient --nw";
     "vbmeta"="/home/robban/ihu/external/avb/avbtool make_vbmeta_image --flag 2 --output vbmeta.img;echo 'done'";
     "sync"="adb root;adb remount;adb sync;adb shell sync";
     "build_server_connect"="ssh robban@10.239.124.56";
