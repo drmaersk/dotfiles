@@ -20,7 +20,7 @@
   services.cntlm.extraConfig = "
 NoProxy localhost, 127.0.0.*, 10.*, 192.168.*, *.delphiauto.net  
 Auth            NTLMv2
-PassNTLMv2      8ACF7FF88932CD7089B8589D8B677E41
+PassNTLMv2      DDAAF49EFBE6B2153F01E265CC78E615
 ";
 
 #  PassNTLMv2      38495C2BC3DCCE372639E39E98F626D8    # Only for user 'mj08y1', domain 'EUROPE'

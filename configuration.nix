@@ -28,7 +28,6 @@ in
 #    ./modules/proxy_no_proxy.nix
     ./modules/proxy.nix
     ./modules/docker.nix
-#    ./modules/vpn/pkgs/delphi_vpn/default.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -131,7 +130,8 @@ in
     openjdk10
     tmux
     sshfs
-    (import ./pkgs/delphi_vpn)
+    nixnote2
+    pinta
   ];
 #    cquery-2018-05-01
 
