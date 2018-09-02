@@ -8,17 +8,32 @@ let
   pidgin = pkgs.pidgin-with-plugins.override {
     plugins = [ pkgs.pidginsipe ];
   };
-  spotify = pkgs.spotify.overrideDerivation (oldAttrs: rec {
-    name = "spotify-${version}";
-    version = "1.0.70.399.g5ffabd56-26";
+#   spotify = pkgs.spotify.overrideDerivation (oldAttrs: rec {
+#     name = "spotify-${version}";
+#     version = "1.0.70.399.g5ffabd56-26";
   
-    src = pkgs.fetchurl {
-      url = "https://repository-origin.spotify.com/pool/non-free/s/spotify-client/spotify-client_${version}_amd64.deb";
-      sha256 = "0kpakz11xkyqqjvln4jkhc3z5my8zgpw8m6jx954cjdbc6vkxd29";
-     };
-});
+#     src = pkgs.fetchurl {
+#       url = "https://repository-origin.spotify.com/pool/non-free/s/spotify-client/spotify-client_${version}_amd64.deb";
+#       sha256 = "0kpakz11xkyqqjvln4jkhc3z5my8zgpw8m6jx954cjdbc6vkxd29";
+#      };
+# });
 
 
+
+my-python-packages = python-packages: with python-packages; [
+    requests
+    pyqt5
+    i3ipc
+    xlib
+    pexpect
+    virtualenvwrapper
+    # other python packages you want
+  ]; 
+python-w-packages = pkgs.python3.withPackages my-python-packages;
+
+svrofi = import ./modules/rofi/rofi.nix { inherit pkgs; };
+urxvt = import ./modules/urxvt/urxvt.nix { inherit pkgs; };
+ff-netflix = import ./modules/ff-netflix.nix {inherit pkgs; };
 
 in
 {
@@ -53,11 +68,10 @@ in
   [General]
   Enable=Source,Sink,Media,Socket
 ";
-
-
   nixpkgs.config.pulseaudio = true;
  
-
+  virtualisation.virtualbox.host.enable = true;
+  
   # Set your time zone.
   time.timeZone = "Europe/Stockholm";
   services.ntp.enable = true;
@@ -66,7 +80,6 @@ in
 
   environment.systemPackages = with pkgs; [
     wget
-    vim
     emacs
     firefox
     gitRepo
@@ -84,14 +97,10 @@ in
     exfat-utils
     fuse_exfat
     discount
-    autocutsel
-    guake
     gnome3.gconf
     gptfdisk
-    davmail
     libreoffice
     dosfstools
-    notepadqq
     gdb
     fzf
     cmake
@@ -132,23 +141,31 @@ in
     sshfs
     nixnote2
     pinta
+    clipit
+    (import ./modules/vim.nix)
+    (import ./modules/ccls)
+    arandr
+    networkmanagerapplet
+    pnmixer
+    urxvt
+    ranger
+    feh
+    dunst
+    rofi
+    svrofi
+    libnotify
   ];
-#    cquery-2018-05-01
-
-  
-  #     linuxPackages.virtualbox
-  virtualisation.virtualbox.host.enable = true;
   
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
+  
+
+  environment.variables.GRAPHVIZ_DOT="${pkgs.graphviz}/bin/dot";
+
   programs.bash.enableCompletion = true;
-
   programs.bash.interactiveShellInit = ''
     title() { printf '\033]2;'$1'\a'; }
     start_rdm() { rdm -j 1 -B -a 19 &> /dev/null & disown; }
   '';
-  
   programs.bash.shellAliases = {
     "ll" = "ls -al";
     "emc" = "emacsclient --no-wait";
@@ -162,6 +179,7 @@ in
     "connect_serial1"="sudo minicom -b 115200 -D /dev/ttyUSB1";
     "mount_bs"="sshfs -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3 robban@10.239.124.56:/ /home/robban/buildserver/";
     "unmount_bs"="fusermount3 -u /home/robban/buildserver/";
+    "nixos-cleanup" = "sudo nix-collect-garbage -d";
   };
 
   environment.etc."inputrc".text = lib.mkForce (
@@ -172,35 +190,30 @@ in
       "\e[6~": history-search-forward
     ''
   );
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
 
-  # List services that you want to enable:
+  networking.networkmanager.enable = true;
 
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
 
   # Enable the X11 windowing system.
-   services.xserver.enable = true;
-   services.xserver.layout = "se";
-   services.xserver.xkbVariant = "dvorak";
-   services.xserver.videoDrivers = [ "intel" ];
-
-  # Enable touchpad support.
-  # services.xserver.libinput.enable = true;
-
+  services.xserver.enable = true;
+  services.xserver.layout = "se";
+  services.xserver.xkbVariant = "dvorak";
+  services.xserver.videoDrivers = [ "intel" ];
+  
   # Enable the KDE Desktop Environment.
-   services.xserver.displayManager.gdm.enable = true;
-   services.xserver.desktopManager.gnome3.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome3.enable = true;
+
+
+    # Enable cron service
+  services.cron = {
+    enable = true;
+    systemCronJobs = [
+      "0 * * * *        root    updatedb --output=/home/robban/.config/locatedb/rootdb"
+      "5 * * * *        robban  updatedb --localpaths=/home/robban/ihu --output=/home/robban/.config/locatedb/ihudb"
+      "*/5 * * * *      robban  updatedb --localpaths=/home/robban/ihu/vendor/aptiv --output=/home/robban/.config/ihu_aptivdb"
+    ];
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.extraUsers.robban = {
