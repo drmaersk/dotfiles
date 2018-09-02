@@ -59,7 +59,8 @@ for_window [class="pyqt_hello.py"] resize set 640 480
 
 exec --no-startup-id pnmixer
 exec --no-startup-id nm-applet 
-#exec --no-startup-id /home/robban/dev/python/screen_operations.py auto
+
+exec --no-startup-id /home/robban/Dev/dotfiles_laptop/python/screen_operations.py auto
 exec --no-startup-id feh --bg-fill /home/robban/.config/wallpaper.jpg
 exec --no-startup-id xset s off -dpms
 exec --no-startup-id clipit

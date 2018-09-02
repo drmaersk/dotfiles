@@ -40,9 +40,9 @@ in
   imports =
     [ # Include the results of the hardware scan.
     /etc/nixos/hardware-configuration.nix
-#    ./modules/proxy_no_proxy.nix
     ./modules/proxy.nix
     ./modules/docker.nix
+    ./modules/rice/rice.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -118,7 +118,6 @@ in
     lsof
     ag
     spotify
-    parcellite
     jre
     graphviz
     doxygen
@@ -129,7 +128,7 @@ in
     bluez-tools
     blueman
     python
-    python3
+    python-w-packages
     gdb
     cpulimit
     file
@@ -160,6 +159,7 @@ in
   
 
   environment.variables.GRAPHVIZ_DOT="${pkgs.graphviz}/bin/dot";
+  environment.variables.TERM="xterm-256color";
 
   programs.bash.enableCompletion = true;
   programs.bash.interactiveShellInit = ''
@@ -188,6 +188,8 @@ in
       #  alternate mappings for "page up" and "page down" to search the history
       "\e[5~": history-search-backward
       "\e[6~": history-search-forward
+      "\eOc": forward-word
+      "\eOd": backward-word
     ''
   );
 
@@ -195,14 +197,14 @@ in
 
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.layout = "se";
-  services.xserver.xkbVariant = "dvorak";
-  services.xserver.videoDrivers = [ "intel" ];
+  # services.xserver.enable = true;
+  # services.xserver.layout = "se";
+  # services.xserver.xkbVariant = "dvorak";
+  # services.xserver.videoDrivers = [ "intel" ];
   
   # Enable the KDE Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome3.enable = true;
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.desktopManager.gnome3.enable = true;
 
 
     # Enable cron service

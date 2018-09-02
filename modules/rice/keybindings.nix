@@ -11,7 +11,7 @@ bindsym $mod+t exec svarog-urxvt
 bindsym $mod+w kill
 bindsym $mod+l exec arandr
 bindsym $mod+e exec svarog-urxvt -e ranger
-#bindsym $mod+b exec --no-startup-id /home/robban/dev/python/pyqt_hello.py
+#bindsym $mod+b exec --no-startup-id /home/robban/Dev/dotfiles_laptop/python/pyqt_hello.py
 #bindsym $mod+c exec clipster -sp
 
 # change focus
@@ -19,8 +19,8 @@ bindsym $mod+e exec svarog-urxvt -e ranger
 #bindsym $mod+t focus down
 #bindsym $mod+n focus up
 #bindsym $mod+s focus right
-#bindsym $mod+BackSpace exec --no-startup-id /home/robban/dev/python/screen_operations.py auto
-#bindsym $mod+Shift+BackSpace exec --no-startup-id /home/robban/dev/python/screen_operations.py toggle
+bindsym $mod+BackSpace exec --no-startup-id /home/robban/Dev/dotfiles_laptop/python/screen_operations.py auto
+bindsym $mod+Shift+BackSpace exec --no-startup-id /home/robban/Dev/dotfiles_laptop/python/screen_operations.py toggle
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -41,7 +41,7 @@ bindsym $mod+h split h
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
-#bindsym $mod+Shift+f exec --no-startup-id /home/robban/dev/python/i3-resize-floating.py
+bindsym $mod+Shift+f exec --no-startup-id /home/robban/Dev/dotfiles_laptop/python/i3-resize-floating.py
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+o layout stacking
@@ -100,8 +100,8 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 #bindsym $mod+Shift+F12 exec echo "connect 00:16:94:1B:01:D8" | bluetoothctl
 #bindsym $mod+F12 exec echo "disconnect 00:16:94:1B:01:D8" | bluetoothct
 
-#bindsym $mod+F1 exec --no-startup-id /home/robban/dev/python/audio/bluetooth_menu.py
-#bindsym $mod+F2 exec --no-startup-id /home/robban/dev/python/audio/soundcard_menu.py
+bindsym $mod+F1 exec --no-startup-id /home/robban/Dev/dotfiles_laptop/python/audio/bluetooth_menu.py
+bindsym $mod+F2 exec --no-startup-id /home/robban/Dev/dotfiles_laptop/python/audio/soundcard_menu.py
 
 #bindsym $mod+F12 exec --no-startup-id /home/robban/dev/scripts/toggle_dvorak.sh
 
