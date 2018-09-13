@@ -9,7 +9,7 @@ bindsym $mod+Tab exec svarog-rofi -show window
 #bindsym $mod+p exec svarog-rofi -show ssh
 bindsym $mod+t exec svarog-urxvt
 bindsym $mod+w kill
-bindsym $mod+l exec arandr
+bindsym $mod+Control+l exec arandr
 bindsym $mod+e exec svarog-urxvt -e ranger
 #bindsym $mod+b exec --no-startup-id /home/robban/Dev/dotfiles_laptop/python/pyqt_hello.py
 #bindsym $mod+c exec clipster -sp
@@ -33,6 +33,10 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+
+# Mod1 == Alt
+bindsym $mod+Mod1+Left move workspace to output left
+bindsym $mod+Mod1+Right move workspace to output right
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -103,7 +107,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 bindsym $mod+F1 exec --no-startup-id /home/robban/Dev/dotfiles_laptop/python/audio/bluetooth_menu.py
 bindsym $mod+F2 exec --no-startup-id /home/robban/Dev/dotfiles_laptop/python/audio/soundcard_menu.py
 
-#bindsym $mod+F12 exec --no-startup-id /home/robban/dev/scripts/toggle_dvorak.sh
+bindsym $mod+F12 exec --no-startup-id /home/robban/Dev/dotfiles_laptop/scripts/toggle_dvorak.sh
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -131,6 +135,6 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+Shift+z move scratchpad
 
-bindsym $mod+Control+l exec ${pkgs.i3lock-fancy}/bin/i3lock-fancy
+bindsym $mod+l exec ${pkgs.i3lock-fancy}/bin/i3lock-fancy
 focus_follows_mouse no
 ''

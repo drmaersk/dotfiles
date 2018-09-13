@@ -22,6 +22,8 @@ URxvt.keysym.C-0:  font-size:reset
 
 !! URxvt.keysym.C-Left: \033[1;5D    !! added to inputrc instead
 !! URxvt.keysym.C-Right: \033[1;5C   !! added to inputrc instead
+URxvt.keysym.Home: \033[1~
+URxvt.keysym.End: \033[4~
 
 ! Fonts
 URxvt.allow_bold:           true

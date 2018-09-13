@@ -41,6 +41,7 @@ in
     [ # Include the results of the hardware scan.
     /etc/nixos/hardware-configuration.nix
     ./modules/proxy.nix
+#    ./modules/proxy_no_proxy.nix
     ./modules/docker.nix
     ./modules/rice/rice.nix
     ];
@@ -153,6 +154,7 @@ in
     rofi
     svrofi
     libnotify
+    rclone
   ];
   
 
