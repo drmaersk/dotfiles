@@ -52,13 +52,6 @@
     (global-company-mode 1)
     )
 
-
-;; (add-hook 'c-mode-hook
-;;           (lambda () (lsp-ccls-enable)))
-
-;; (add-hook 'c++-mode-hook
-;;           (lambda () (lsp-ccls-enable)))
-
 (setq company-transformers nil company-lsp-async t company-lsp-cache-candidates nil)
 
 ;;(setq ccls-extra-init-params '(:cacheDirectory "/home/robban/.config/ccls" :enableComments 2 :cacheFormat "msgpack" :completion (:detailedLabel t)  ))
@@ -71,7 +64,19 @@
 (setq ccls-extra-init-params '(:completion (:detailedLabel t)))
 
 
+;; Value: ((-32700 "Parse Error")
+;;  (-32600 "Invalid Request")
+;;  (-32601 "Method not Found")
+;;  (-32602 "Invalid Parameters")
+;;  (-32603 "Internal Error")
+;;  (-32099 "Server Start Error")
+;;  (-32000 "Server End Error")
+;;  (-32002 "Server Not Initialized")
+;;  (-32001 "Unknown Error Code")
+;;  (-32800 "Request Cancelled"))
 
-;; Also see lsp-project-whitelist lsp-project-blacklist ccls-root-matchers
+(push '-32603 lsp--silent-errors) ;;Internal Error"
+(push '-32002 lsp--silent-errors) ;;Server Not Initialized"
+
 
 

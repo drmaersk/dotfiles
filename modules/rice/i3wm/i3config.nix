@@ -64,6 +64,8 @@ exec --no-startup-id /home/robban/Dev/dotfiles_laptop/python/screen_operations.p
 exec --no-startup-id feh --bg-fill /home/robban/.config/wallpaper.jpg
 #exec --no-startup-id xset s off -dpms
 exec --no-startup-id clipit
+exec --no-startup-id emacs-26.1 --daemon
+exec --no-startup-id /home/robban/Dev/tomcat/start.sh
 
 ${import config-extra {inherit pkgs config;}}
 

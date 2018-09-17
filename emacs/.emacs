@@ -4,9 +4,9 @@
 
 (load "~/dotfiles/emacs/001-package.el")
 
-;;(load "/home/robban/.emacs.d/elpa/cquery-20180413.938/cquery.el")
+(load "/home/robban/.emacs.d/elpa/cquery-20180413.938/cquery.el")
 
-(load "~/dotfiles/emacs/color-theme-settings.el")
+;;(load "~/dotfiles/emacs/color-theme-settings.el")
 ;;(load "~/dotfiles/emacs/line-endings.el")
 (load "~/dotfiles/emacs/helm.el")
 (load "~/dotfiles/emacs/ibuffer.el")
@@ -16,6 +16,8 @@
 (load "~/dotfiles/emacs/scratch.el")
 (load "~/dotfiles/emacs/ccls.el")
 (load "~/dotfiles/emacs/hydra.el")
+(load "~/dotfiles/emacs/doom.el")
+(load "~/dotfiles/emacs/grok.el")
 ;; Keep last so everything is loaded
 (load "~/dotfiles/emacs/xah.el")
 (load "~/dotfiles/emacs/keybindings.el")
@@ -33,7 +35,6 @@
 (setq backup-directory-alist `(("." . "~/.saves")))
 ;;(setq make-backup-files nil)
 (setq delete-old-versions  t)
-(server-start)
 (setq x-select-enable-clipboard t)
 
 (setq-default indent-tabs-mode nil)

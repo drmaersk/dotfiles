@@ -81,7 +81,8 @@ in
 
   environment.systemPackages = with pkgs; [
     wget
-    emacs
+    #emacs-26.1  nix-env
+    #emacs-all-the-icons-fonts-3.1.1 nix-env
     firefox
     gitRepo
     git
