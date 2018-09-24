@@ -8,32 +8,52 @@
 ;;   ("g" text-scale-increase "in")
 ;;   ("l" text-scale-decrease "out"))
 
+(defhydra hydra-super-gitter (:color pink
+                             :hint nil)
 
-(defhydra hydra-buffer-menu (:color pink
+  "
+
+^  ^Commands^        
+^  ^^^^^^^^----------
+^  _s_: status   
+^  _d_: diff-mode   
+^  _n_: next-diff      
+^  _p_: prev-diff         
+^  ^ ^
+"
+  ("s" magit-status :exit t)
+  ("d" git-gutter:popup-hunk)
+  ("n" git-gutter:next-hunk)
+  ("p" git-gutter:previous-hunk)
+  ("q" nil "quit"))
+
+
+(defhydra hydra-super-searcher (:color pink
                              :hint nil)
 
   "
 
 ^  ^Find^             ^Show^             ^Actions^          ^Search
 ^  ^^^^^^^^-----------------------------------------------------------------
-^  _r_: references    _m_: members       _p_: preprocess    _f_: file
+^  _r_: references    _G_: GIT           _p_: preprocess    _f_: file
 ^  _d_: definition    _c_: callers       _R_: rename        _P_: replace
-^  _a_: apropos       ^ ^                ^ ^                _O_: multi-occur
+^  _a_: apropos       _m_: members       ^ ^                _O_: multi-occur
 ^  _g_: grep          ^ ^                ^ ^
 ^  ^ ^
 "
-  ("r" lsp-ui-peek-find-references)
-  ("d" lsp-ui-peek-find-definitions)
-  ("a" xref-find-apropos)
-  ("g" robb-grep)
-  ("m" ccls-member-hierarchy)
-  ("c" ccls-call-hierarchy)
-  ("R" lsp-rename)
-  ("p" ccls-preprocess-file)
-  ("O" Buffer-menu-multi-occur :color blue)
-  ("P" query-replace :color blue)
-  ("f" robb-search-in-file :color blue)
-  ("q" nil "quit" :color blue))
+  ("r" lsp-ui-peek-find-references :exit t)
+  ("d" lsp-ui-peek-find-definitions :exit t)
+  ("a" xref-find-apropos :exit t)
+  ("g" robb-grep :exit t)
+  ("m" ccls-member-hierarchy :exit t)
+  ("c" ccls-call-hierarchy :exit t)
+  ("G" hydra-super-gitter/body :exit t)
+  ("R" lsp-rename :exit t)
+  ("p" ccls-preprocess-file :exit t)
+  ("O" Buffer-menu-multi-occur :exit t)
+  ("P" query-replace :exit t)
+  ("f" robb-search-in-file :exit t)
+  ("q" nil "quit"))
  
-(global-set-key [f2] 'hydra-buffer-menu/body)
+(global-set-key [f2] 'hydra-super-searcher/body)
 

@@ -70,7 +70,7 @@
 (global-set-key (kbd "C-<f4>") 'robb-find-callers)
 ;;(global-set-key (kbd "C-<f3>") 'lsp-ui-peek-find-references)
 (global-set-key (kbd "M-RET") 'company-complete)
-(global-set-key (kbd "C-c C-c") 'list-flycheck-errors)
+(global-set-key (kbd "C-c C-c") 'avy-goto-char)
 ;;(global-set-key [f8] 'semantic-ia-complete-symbol-menu)
 (global-set-key [f8] 'robb-get-current-path)
 ;;(global-set-key (kbd "C-<f6>") 'cscope-find-this-symbol)

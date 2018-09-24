@@ -18,6 +18,9 @@
 (load "~/dotfiles/emacs/hydra.el")
 (load "~/dotfiles/emacs/doom.el")
 (load "~/dotfiles/emacs/grok.el")
+(load "~/dotfiles/emacs/avy.el")
+(load "~/dotfiles/emacs/cscope.el")
+(load "~/dotfiles/emacs/gitgutter.el")
 ;; Keep last so everything is loaded
 (load "~/dotfiles/emacs/xah.el")
 (load "~/dotfiles/emacs/keybindings.el")
@@ -33,6 +36,8 @@
 
 ;; No backup-files
 (setq backup-directory-alist `(("." . "~/.saves")))
+
+(setq auto-save-default nil) ; stop creating #autosave# files
 ;;(setq make-backup-files nil)
 (setq delete-old-versions  t)
 (setq x-select-enable-clipboard t)
@@ -81,7 +86,7 @@
  '(lsp-ui-sideline-enable nil)
  '(package-selected-packages
    (quote
-    (dracula-theme flycheck-plantuml elpy guide-key smart-mode-line android-mode elogcat eopengrok cquery ws-butler dtrt-indent helm-ag helm-rtags rtags flycheck-irony flycheck plantuml-mode flymd ibuffer-projectile helm-gtags ggtags nix-mode color-theme helm company)))
+    (avy helm-cscope dracula-theme flycheck-plantuml elpy guide-key smart-mode-line android-mode elogcat eopengrok cquery ws-butler dtrt-indent helm-ag helm-rtags rtags flycheck-irony flycheck plantuml-mode flymd ibuffer-projectile helm-gtags ggtags nix-mode color-theme helm company)))
  '(plantuml-jar-path "/home/robban/.config/plantuml/plantuml.jar")
  '(sml/mode-width
    (if

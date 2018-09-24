@@ -62,16 +62,16 @@ bindsym $mod+Shift+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # switch to workspace
-bindsym $mod+1 workspace $workspace1
-bindsym $mod+2 workspace $workspace2
-bindsym $mod+3 workspace $workspace3
-bindsym $mod+4 workspace $workspace4
-bindsym $mod+5 workspace $workspace5
-bindsym $mod+6 workspace $workspace6
-bindsym $mod+7 workspace $workspace7
-bindsym $mod+8 workspace $workspace8
-bindsym $mod+9 workspace $workspace9
-bindsym $mod+0 workspace $workspace10
+bindsym $mod+1 workspace number $workspace1
+bindsym $mod+2 workspace number $workspace2
+bindsym $mod+3 workspace number $workspace3
+bindsym $mod+4 workspace number $workspace4
+bindsym $mod+5 workspace number $workspace5
+bindsym $mod+6 workspace number $workspace6
+bindsym $mod+7 workspace number $workspace7
+bindsym $mod+8 workspace number $workspace8
+bindsym $mod+9 workspace number $workspace9
+bindsym $mod+0 workspace number $workspace10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $workspace1

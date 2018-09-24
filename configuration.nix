@@ -136,7 +136,7 @@ in
     file
     libcgroup
     lcov
-    ctags
+    universal-ctags
     openjdk10
     tmux
     sshfs
@@ -156,6 +156,8 @@ in
     svrofi
     libnotify
     rclone
+    ripgrep
+    cscope
   ];
   
 
@@ -183,6 +185,7 @@ in
     "mount_bs"="sshfs -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3 robban@10.239.124.56:/ /home/robban/buildserver/";
     "unmount_bs"="fusermount3 -u /home/robban/buildserver/";
     "nixos-cleanup" = "sudo nix-collect-garbage -d";
+    "create_tags" = "/home/robban/Dev/dotfiles_laptop/scripts/create_tags.sh";
   };
 
   environment.etc."inputrc".text = lib.mkForce (
