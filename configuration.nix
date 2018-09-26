@@ -34,6 +34,7 @@ python-w-packages = pkgs.python3.withPackages my-python-packages;
 svrofi = import ./modules/rofi/rofi.nix { inherit pkgs; };
 urxvt = import ./modules/urxvt/urxvt.nix { inherit pkgs; };
 ff-netflix = import ./modules/ff-netflix.nix {inherit pkgs; };
+rename_ws = import ./modules/python_cmds.nix {inherit pkgs; };
 
 in
 {
@@ -154,10 +155,12 @@ in
     dunst
     rofi
     svrofi
+    rename_ws
     libnotify
     rclone
     ripgrep
     cscope
+    xorg.xev
   ];
   
 

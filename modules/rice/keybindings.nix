@@ -106,7 +106,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 
 bindsym $mod+F1 exec --no-startup-id /home/robban/Dev/dotfiles_laptop/python/audio/bluetooth_menu.py
 bindsym $mod+F2 exec --no-startup-id /home/robban/Dev/dotfiles_laptop/python/audio/soundcard_menu.py
-
+bindsym Help exec --no-startup-id /home/robban/Dev/dotfiles_laptop/python/audio/soundcard_menu.py
 bindsym $mod+F12 exec --no-startup-id /home/robban/Dev/dotfiles_laptop/scripts/toggle_dvorak.sh
 
 # resize window (you can also use the mouse for that)
