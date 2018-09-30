@@ -1,14 +1,18 @@
 (elpy-enable)
 
+(use-package jedi
+ :ensure t)
 
 (defun elpy//enable ()
   (condition-case nil
       (progn
         (flycheck-mode)
+       (jedi:setup)
 ;;        (local-unset-key (kbd "M-left"))
 ;;        (local-unset-key (kbd "M-right"))
         (define-key elpy-mode-map (kbd "M-<left>") 'xah-previous-user-buffer)
         (define-key elpy-mode-map (kbd "M-<right>") 'xah-previous-user-buffer)
+       (define-key elpy-mode-map (kbd "C-RET") 'elpy-company-backend)
         )
     (user-error nil)))
 
@@ -27,9 +31,9 @@
 (when (require 'flycheck nil t)
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook #'elpy//enable))
-
+;;pip install jedi rope flake8 yapf importmagic
 (setq elpy-rpc-backend "jedi")
 
-(pyvenv-activate "~/dev/python/python-venv/")
+(pyvenv-activate "~/Dev/python/venv/")
 
 

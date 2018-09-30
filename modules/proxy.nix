@@ -25,7 +25,8 @@ PassNTLMv2      B404E57448F2BFA7D0B44E6E62B76592
 ";
 # Rdppdskks4444
 #  PassNTLMv2      38495C2BC3DCCE372639E39E98F626D8    # Only for user 'mj08y1', domain 'EUROPE'
-  networking.proxy.noProxy = "localhost, 127.0.0.*, 192.168.*, *.delphiauto.net";
+#  networking.proxy.noProxy = "localhost, 127.0.0.*, 192.168.*, *.delphiauto.net";
+  networking.proxy.noProxy = "*";
   networking.proxy.default = "http://127.0.0.1:3128";
 
   environment.etc.gitconfig.text = ''

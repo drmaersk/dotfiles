@@ -57,3 +57,26 @@
  
 (global-set-key [f2] 'hydra-super-searcher/body)
 
+(defhydra hydra-locater (:color pink
+                             :hint nil)
+
+  "
+
+^  ^Commands^        
+^  ^^^^^^^^----------
+^  _1_: rootdb
+^  _2_: ihudb
+^  _3_: ihu_aptivdb
+^  _4_: semdb
+^  _5_: sem_aptivdb
+^  _s_: search
+^  ^ ^
+"
+  ("1" setlocate-root)
+  ("2" setlocate-ihu)
+  ("3" setlocate-ihu_aptiv)
+  ("4" setlocate-sem)
+  ("5" setlocate-sem_aptiv)
+  ("s" helm-locate :exit t))
+(global-set-key (kbd "C-l") 'hydra-locater/body)
+

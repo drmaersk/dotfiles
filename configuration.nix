@@ -76,7 +76,7 @@ in
   
   # Set your time zone.
   time.timeZone = "Europe/Stockholm";
-  services.ntp.enable = true;
+  services.ntp.enable = false;
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
 
@@ -222,7 +222,10 @@ in
     systemCronJobs = [
       "0 * * * *        root    updatedb --output=/home/robban/.config/locatedb/rootdb"
       "5 * * * *        robban  updatedb --localpaths=/home/robban/ihu --output=/home/robban/.config/locatedb/ihudb"
-      "*/5 * * * *      robban  updatedb --localpaths=/home/robban/ihu/vendor/aptiv --output=/home/robban/.config/ihu_aptivdb"
+      "10 * * * *       robban  updatedb --localpaths=/home/robban/ihu/vendor/aptiv --output=/home/robban/.config/locatedb/ihu_aptivdb"
+      "30 */2 * * *     robban  updatedb --localpaths=/home/robban/disk2/sem --output=/home/robban/.config/locatedb/semdb"
+      "35 */2 * * *     robban  updatedb --localpaths=/home/robban/disk2/sem/vendor/aptiv --output=/home/robban/.config/locatedb/sem_aptivdb"
+      "*/30 * * * *     robban  /home/robban/Dev/dotfiles_laptop/scripts/create_tags.sh"
     ];
   };
 

@@ -101,7 +101,6 @@
 (global-set-key (kbd "C-M-s-<down>") 'shrink-window)
 (global-set-key (kbd "C-M-s-<right>") 'enlarge-window-horizontally)
 (global-set-key (kbd "C-M-s-<left>") 'shrink-window-horizontally)
-(global-set-key (kbd "C-l") 'helm-locate)
 (global-set-key (kbd "C-f") 'helm-occur-from-isearch)
 
 

@@ -34,4 +34,5 @@
 
 (use-package helm-cscope
   :ensure t
+  :bind (("C-c C-h" . helm-cscope-find-this-symbol))
   )
